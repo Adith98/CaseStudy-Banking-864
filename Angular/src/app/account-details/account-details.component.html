@@ -1,0 +1,108 @@
+<div class="dropdown-divider"></div>
+<div class="recent-transactions main-block col-12 m-auto p-2 WorkSans">
+    <div class="pt-1 text-danger"><b>Recent Transactions:</b></div>
+    <hr>
+    <div class="recent-transactions-box">
+        <div class="recent-transactions-group card-group">
+            <div *ngFor="let add of transactions" class="card">
+                <div class="card-body text-center">
+                    <h5 *ngIf="add.debited" class="card-title text-danger">
+                        <span class="material-icons d-inline-block align-text-bottom">
+                            remove_circle
+                        </span>
+                        Debited
+                    </h5>
+                    <h5 *ngIf="add.credited" class="card-title text-success">
+                        <span class="material-icons d-inline-block align-text-bottom">
+                            add_circle
+                        </span>
+                        Credited
+                    </h5>
+                    <hr>
+                    <p><b>&#x20B9;{{add.amount + add.tax}}</b></p>
+                    <hr>
+                    <small class="text-muted">{{add.trans_time| date:'yyyy-MM-dd'}}</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="dropdown-divider"></div>
+
+<div class="personal-details main-block col-12 m-auto p-2 Lato">
+    <div class="row">
+        <div class="col-auto">
+            <div class="pt-1 text-muted"><b>Personal Details:</b></div>
+        </div>
+        <div class="col-auto mr-2 text-right">
+            <a routerLink="/userdashboard/Update-Details" class="btn btn-lightpink">Update Details</a>
+        </div>
+    </div>    
+    <hr>
+    <div class="table-responsive">
+        <table class="table">
+            <tbody>
+                <tr *ngFor="let add of useraddress">
+                    <td *ngIf="add.type_of_address==='same';else notsame"><b>Address:</b></td>
+                    <ng-template #notsame>
+                        <td><b>{{add.type_of_address}}:</b></td>
+                    </ng-template>
+                    <td>{{add.line1}}, {{add.line2}}, {{add.landmark}}, {{add.cust_state}},
+                        {{add.city}}-{{add.pin_code}}</td>
+                </tr>
+
+                <tr>
+                    <td><b>Full Name:</b></td>
+                    <td>{{userdetails.title}} {{userdetails.first_name}} {{userdetails.middle_name}}
+                        {{userdetails.last_name}}<br></td>
+                </tr>
+
+                <tr>
+                    <td><b>Father's Name:</b></td>
+                    <td>{{userdetails.fathers_name}}</td>
+                </tr>
+
+                <tr>
+                    <td><b>Mobile Number:</b></td>
+                    <td>{{userdetails.mobile_number}}</td>
+                </tr>
+                <tr>
+                    <td><b>Email Id:</b></td>
+                    <td>{{userdetails.email}}</td>
+                </tr>
+                <tr>
+                    <td><b>Pan Number:</b></td>
+                    <td>{{userdetails.pan_card}}</td>
+                </tr>
+                <tr>
+                    <td><b>Aadhar Card:</b></td>
+                    <td>{{userdetails.aadhar}}</td>
+                </tr>
+                <tr>
+                    <td><b>Date Of Birth:</b></td>
+                    <td>{{userdetails.dob| date:'yyyy-MM-dd'}}</td>
+                </tr>
+                <tr>
+                    <td><b>Occupation Type</b></td>
+                    <td>{{userdetails.occupation_type}}</td>
+                </tr>
+                <tr>
+                    <td><b>Source Of Income</b></td>
+                    <td>{{userdetails.source_of_income}}</td>
+                </tr>
+                <tr>
+                    <td><b>Gross Annual Income</b></td>
+                    <td>{{userdetails.gross_annual_income}}</td>
+                </tr>
+                <tr>
+                    <td><b>Opted For Debit Card</b></td>
+                    <td>{{userdetails.debit_card}}</td>
+                </tr>
+                <tr>
+                    <td><b>Opted For Net Banking</b></td>
+                    <td>{{userdetails.net_banking}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

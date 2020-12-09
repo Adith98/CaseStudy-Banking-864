@@ -1,0 +1,399 @@
+
+
+<div class="personal-details main-block col-12 m-auto p-2 Lato">
+    <div class="row">
+        <div class="col-auto">
+            <div class="pt-1 text-muted"><b>Update Personal Details:</b></div>
+        </div>
+    </div>
+    <hr>
+    <div class="container">
+        <form #UpdateDetails="ngForm" (ngSubmit)="update(UpdateDetails)">
+            <div id="title" class="form-group row">
+                <div class="col-sm-2">
+                    <select name="title" class="form-control" [(ngModel)]=userdetails.title>
+                        <option value="Mr">Mr.</option>
+                        <option value="Mrs">Mrs.</option>
+                        <option value="Ms">Ms.</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">First Name</label>
+                <div class="col-sm-10">
+                    <input type="text" name="first_name" class="form-control" [(ngModel)]=userdetails.first_name
+                        #first_name="ngModel" required>
+                </div>
+                <div class="col-12 mt-1 alert alert-danger"
+                    *ngIf="!first_name?.valid &&(first_name?.dirty || first_name?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="first_name.errors.required">
+                        <small class="text-danger">First Name is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Middle Name</label>
+                <div class="col-sm-10">
+                    <input type="text" name="middle_name" class="form-control" [(ngModel)]=userdetails.middle_name
+                        #middle_name="ngModel" required>
+                </div>
+                <div class="col-12 mt-1 alert alert-danger"
+                    *ngIf="!middle_name?.valid &&(middle_name?.dirty || middle_name?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="middle_name.errors.required">
+                        <small class="text-danger">Middle Name is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Last Name</label>
+                <div class="col-sm-10">
+                    <input type="text" name="last_name" class="form-control" [(ngModel)]=userdetails.last_name
+                        #last_name="ngModel" required>
+                </div>
+                <div class="col-12 mt-1 alert alert-danger"
+                    *ngIf="!last_name?.valid &&(last_name?.dirty || last_name?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="last_name.errors.required">
+                        <small class="text-danger">Last Name is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Father's Name</label>
+                <div class="col-sm-10">
+                    <input type="text" name="fathers_name" class="form-control" [(ngModel)]=userdetails.fathers_name
+                        #fathers_name="ngModel" required>
+                </div>
+                <div class="col-12 mt-1 alert alert-danger"
+                    *ngIf="!fathers_name?.valid &&(fathers_name?.dirty || fathers_name?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="fathers_name.errors.required">
+                        <small class="text-danger">Father's Name is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Mobile Number</label>
+                <div class="col-sm-10">
+                    <input type="text" name="mobile_number" class="form-control" [(ngModel)]=userdetails.mobile_number
+                        #mobile_number="ngModel" required pattern="^[7-9]\d{9}$">
+                </div>
+                <div class="col-12 mt-1 alert alert-danger"
+                    *ngIf="!mobile_number?.valid &&(mobile_number?.dirty || mobile_number?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="mobile_number.errors.required">
+                        <small class="text-danger">Mobile Number is required</small>
+                    </div>
+                    <div *ngIf="mobile_number.errors.pattern">
+                        <small class="text-danger">Invalid Mobile Number</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" name="email" class="form-control" [(ngModel)]=userdetails.email #email="ngModel"
+                        required email>
+                </div>
+                <div class="col-12 mt-1 alert alert-danger"
+                    *ngIf="!email?.valid &&(email?.dirty || email?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="email.errors.required">
+                        <small class="text-danger">Email is required</small>
+                    </div>
+                    <div *ngIf="email.errors.email">
+                        <small class="text-danger">Invalid Email</small>
+                    </div>
+                </div>
+    
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Aadhar Number</label>
+                <div class="col-sm-10">
+                    <input type="text" name="aadhar" class="form-control" [(ngModel)]=userdetails.aadhar #aadhar="ngModel"
+                        required pattern="^[2-9]{1}[0-9]{3}[0-9]{4}[0-9]{4}$">
+                </div>
+                <div class="col-12 mt-1 alert alert-danger"
+                    *ngIf="!aadhar?.valid &&(aadhar?.dirty || aadhar?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="aadhar.errors.required">
+                        <small class="text-danger">Aadhar Number is required</small>
+                    </div>
+                    <div *ngIf="aadhar.errors.pattern">
+                        <small class="text-danger">Invalid Aadhar Number</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Pan Card</label>
+                <div class="col-sm-10">
+                    <input type="text" name="pan_card" class="form-control" [(ngModel)]=userdetails.pan_card
+                        #pan_card="ngModel" required pattern='^[A-Z]{5}[0-9]{4}[A-Z]{1}$'>
+                </div>
+                <div class="col-12 mt-1 alert alert-danger"
+                    *ngIf="!pan_card?.valid &&(pan_card?.dirty || pan_card?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="pan_card.errors.required">
+                        <small class="text-danger">Pan Card is required</small>
+                    </div>
+                    <div *ngIf="pan_card.errors.pattern">
+                        <small class="text-danger">Invalid Pan Number</small>
+                    </div>
+                </div>
+            </div>
+            <!--div class="form-group row">
+                <label class="col-sm-2 col-form-label">Pan Document</label>
+                <div class="col-sm-auto">
+                    {{userdetails.pan_doc}}
+                </div>
+                <div class="col-sm-8">
+                    <input type="file" name="pan_doc" [(ngModel)]=userdetails.pan_doc #pan_doc="ngModel" required>
+                </div>           
+                <div class="col-12 mt-1 alert alert-danger" *ngIf="!pan_doc?.valid &&(pan_doc?.dirty || pan_doc?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="pan_doc.errors.required">
+                        <small class="text-danger">Pan Document is required</small>
+                    </div>
+                </div>
+            </div-->
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">DOB</label>
+                <div class="col-sm-auto">
+                    {{userdetails.dob| date:'yyyy-MM-dd'}}
+                </div>
+                <div class="col-sm-8">
+                    <input type="date" name="dob" class="form-control" [(ngModel)]=userdetails.dob #dob="ngModel" required>
+                </div>
+                <div class="col-12 mt-1 alert alert-danger"
+                    *ngIf="!dob?.valid &&(dob?.dirty || dob?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="dob.errors.required">
+                        <small class="text-danger">DOB is required</small>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <h5>Permanent:</h5>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Line 1</label>
+                <div class="col-sm-10">
+                    <input type="text" name="line1" class="form-control" [(ngModel)]=perm_add.line1 #line1="ngModel"
+                        required>
+                </div>
+                <div class="col-12 mt-1 alert alert-danger"
+                    *ngIf="!line1?.valid &&(line1?.dirty || line1?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="line1.errors.required">
+                        <small class="text-danger">Line 1 is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Line 2</label>
+                <div class="col-sm-10">
+                    <input type="text" name="line2" class="form-control" [(ngModel)]=perm_add.line2 #line2="ngModel"
+                        required>
+                </div>
+                <div class="col-12 mt-1 alert alert-danger"
+                    *ngIf="!line2?.valid &&(line2?.dirty || line2?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="line2.errors.required">
+                        <small class="text-danger">Line 2 is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Landmark</label>
+                <div class="col-sm-10">
+                    <input type="text" name="landmark" class="form-control" [(ngModel)]=perm_add.landmark
+                        #landmark="ngModel" required>
+                </div>
+                <div class="col-12 mt-1 alert alert-danger"
+                    *ngIf="!landmark?.valid &&(landmark?.dirty || landmark?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="landmark.errors.required">
+                        <small class="text-danger">Landmark is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">State</label>
+                <div class="col-sm-10">
+                    <input type="text" name="cust_state" class="form-control" [(ngModel)]=perm_add.cust_state
+                        #cust_state="ngModel" required>
+                </div>
+                <div class="col-12 mt-1 alert alert-danger"
+                    *ngIf="!cust_state?.valid &&(cust_state?.dirty || cust_state?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="cust_state.errors.required">
+                        <small class="text-danger">State is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">City</label>
+                <div class="col-sm-10">
+                    <input type="text" name="city" class="form-control" [(ngModel)]=perm_add.city #city="ngModel" required>
+                </div>
+                <div class="col-12 mt-1 alert alert-danger"
+                    *ngIf="!city?.valid &&(city?.dirty || city?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="city.errors.required">
+                        <small class="text-danger">City is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Pin Code</label>
+                <div class="col-sm-10">
+                    <input type="text" name="pin_code" class="form-control" [(ngModel)]=perm_add.pin_code
+                        #pin_code="ngModel" required>
+                </div>
+                <div class="col-12 mt-1 alert alert-danger"
+                    *ngIf="!pin_code?.valid &&(pin_code?.dirty || pin_code?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="pin_code.errors.required">
+                        <small class="text-danger">Pin Code is required</small>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div *ngIf="notsame">
+                <hr>
+                <h5>Residential:</h5>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Line 1</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="line1_residential" class="form-control" [(ngModel)]=resi_add.line1 #line1_residential="ngModel"
+                            required>
+                    </div>
+                    <div class="col-12 mt-1 alert alert-danger"
+                        *ngIf="!line1_residential?.valid &&(line1_residential?.dirty || line1_residential?.touched || UpdateDetails.submitted)">
+                        <div *ngIf="line1_residential.errors.required">
+                            <small class="text-danger">Line 1 is required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Line 2</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="line2_residential" class="form-control" [(ngModel)]=resi_add.line2 #line2_residential="ngModel"
+                            required>
+                    </div>
+                    <div class="col-12 mt-1 alert alert-danger"
+                        *ngIf="!line2_residential?.valid &&(line2_residential?.dirty || line2_residential?.touched || UpdateDetails.submitted)">
+                        <div *ngIf="line2_residential.errors.required">
+                            <small class="text-danger">Line 2 is required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Landmark</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="landmark_residential" class="form-control" [(ngModel)]=resi_add.landmark
+                            #landmark_residential="ngModel" required>
+                    </div>
+                    <div class="col-12 mt-1 alert alert-danger"
+                        *ngIf="!landmark_residential?.valid &&(landmark_residential?.dirty || landmark_residential?.touched || UpdateDetails.submitted)">
+                        <div *ngIf="landmark_residential.errors.required">
+                            <small class="text-danger">Landmark is required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">State</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="cust_state_residential" class="form-control" [(ngModel)]=resi_add.cust_state
+                            #cust_state_residential="ngModel" required>
+                    </div>
+                    <div class="col-12 mt-1 alert alert-danger"
+                        *ngIf="!cust_state_residential?.valid &&(cust_state_residential?.dirty || cust_state_residential?.touched || UpdateDetails.submitted)">
+                        <div *ngIf="cust_state_residential.errors.required">
+                            <small class="text-danger">State is required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">City</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="city_residential" class="form-control" [(ngModel)]=resi_add.city #city_residential="ngModel"
+                            required>
+                    </div>
+                    <div class="col-12 mt-1 alert alert-danger"
+                        *ngIf="!city_residential?.valid &&(city_residential?.dirty || city_residential?.touched || UpdateDetails.submitted)">
+                        <div *ngIf="city_residential.errors.required">
+                            <small class="text-danger">City is required</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Pin Code</label>
+                    <div class="col-sm-10">
+                        <input type="text" name="pin_code_residential" class="form-control" [(ngModel)]=resi_add.pin_code
+                            #pin_code_residential="ngModel" required>
+                    </div>
+                    <div class="col-12 mt-1 alert alert-danger"
+                        *ngIf="!pin_code_residential?.valid &&(pin_code_residential?.dirty || pin_code_residential?.touched || UpdateDetails.submitted)">
+                        <div *ngIf="pin_code_residential.errors.required">
+                            <small class="text-danger">Pin Code is required</small>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Occupation Type</label>
+                <div class="col-sm-10">
+                    <input type="text" name="occupation_type" class="form-control" [(ngModel)]=userdetails.occupation_type
+                        #occupation_type="ngModel" required>
+                </div>
+                <div class="col-12 mt-1 alert alert-danger"
+                    *ngIf="!occupation_type?.valid &&(occupation_type?.dirty || occupation_type?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="occupation_type.errors.required">
+                        <small class="text-danger">Occupation Type is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Source of Income</label>
+                <div class="col-sm-10">
+                    <input type="text" name="source_of_income" class="form-control" [(ngModel)]=userdetails.source_of_income
+                        #source_of_income="ngModel" required>
+                </div>
+                <div class="col-12 mt-1 alert alert-danger"
+                    *ngIf="!source_of_income?.valid &&(source_of_income?.dirty || source_of_income?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="source_of_income.errors.required">
+                        <small class="text-danger">Source of Income is required</small>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Gross Annual Income</label>
+                <div class="col-sm-10">
+                    <input type="text" name="gross_annual_income" class="form-control" [(ngModel)]=userdetails.gross_annual_income
+                        #gross_annual_income="ngModel" required>
+                </div>
+                <div class="col-12 mt-1 alert alert-danger"
+                    *ngIf="!gross_annual_income?.valid &&(gross_annual_income?.dirty || gross_annual_income?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="gross_annual_income.errors.required">
+                        <small class="text-danger">Gross Annual Income is required</small>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div id="debit_card" class="form-group">
+                <label>Opt For Debit Card? Previously Opted: {{userdetails.debit_card}}</label><br>
+                
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="debit_card" 
+                    #debit_card="ngModel" value="true" required ngModel/>
+                    <label class="form-check-label" for="Yes" class="radio">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="debit_card" 
+                    #debit_card="ngModel" value="false" required ngModel/>
+                    <label class="form-check-label" for="No" class="radio">No</label>
+                </div>
+                <div class="col-12 mt-1 alert alert-danger"
+                    *ngIf="!debit_card?.valid && (debit_card?.dirty || debit_card?.touched || UpdateDetails.submitted)">
+                    <div *ngIf="debit_card.errors.required">
+                        <small class="text-danger">You need to Choose an option Here</small>
+                    </div>
+                </div>
+            </div>
+    
+            <div class="text-center">
+                <button type="submit"
+                    class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+

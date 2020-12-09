@@ -1,0 +1,25 @@
+<div class="pending main-block m-auto p-2 WorkSans">
+    <h5>Customers Alloted To You:</h5>
+    <div class="table-responsive bg-light rounded border border-secondary">
+        <table class="table table-hover">
+            <thead>
+                <th>Customer ID</th>
+                <th>Customer's First Name</th>
+                <th>Customer's Middle Name</th>
+                <th>Customer's Last Name</th>
+                <th>Customer's Mobile Number</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of custalloted">
+                    <td>{{p.cust_id}}</td>
+                    <td>{{p.first_name}}</td>
+                    <td>{{p.middle_name}}</td>
+                    <td>{{p.last_name}}</td>
+                    <td>{{p.mobile_number}}</td>
+                    <td><button class="btn btn-sm btn-lightpink" (click)=ViewDetails(p.cust_id)>View Details</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+

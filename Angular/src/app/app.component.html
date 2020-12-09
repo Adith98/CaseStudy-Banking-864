@@ -1,0 +1,78 @@
+<!--<app-customer-registration></app-customer-registration>-->
+
+<!--<app-login-account></app-login-account>-->
+
+<!--<app-registration></app-registration>-->
+<div class="header">
+    <nav class="navbar navbar-expand-lg">
+        <div class="Logo m1-md-5 ml-4">
+            <button class="btn navbar-toggler toggler" type="button" data-toggle="collapse"
+                data-target="#feature-items" aria-controls="feature-items" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="material-icons text-white">
+                    dehaze
+                </span>
+            </button>
+            <a class="h4 text-white" href="#">
+                ADOS CORP
+            </a>
+        </div>
+  
+        <div class="collapse navbar-collapse mr-md-5" id="feature-items">
+            <ul class="navbar-nav text-white ml-md-auto mr-md-5 pr-md-5">
+                <div *ngIf="!(UserLoggedIn || AdminLoggedIn)">
+                    <li class="nav-item">
+                        <a routerLink="/track-status" class="nav-item-link nav-link">
+                          Track Status
+                        </a>
+                      </li>
+                </div>
+                <li class="nav-item dropdown help">
+                    <a class="dropbtn main-item nav-item-link nav-link" href="/Home#Help">
+                        Help & Support
+                    </a>
+                    <div class="dropdown-content">
+                        <button class="dropdown-item" type="button">Create Account</button>
+                        <button class="dropdown-item" type="button">Track Application</button>
+                        <button class="dropdown-item" type="button">Net Banking</button>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item-link nav-link" href="/Home#AboutUs">About Us</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-item-link nav-link" href="/Home#ContactUs">Contact Us</a>
+                </li>
+            </ul>
+        </div>
+
+        <div *ngIf="UserLoggedIn">
+            <button class="btn btn-outline-danger" (click)="Logout()">Logout</button>
+        </div>
+        <div *ngIf="AdminLoggedIn">
+            <button class="btn btn-outline-danger" (click)="Logout()">Logout</button>
+        </div>
+
+            <div *ngIf="UserLoggedIn===false && AdminLoggedIn===false" class="login-button">
+                <button class="btn btn-outline-secondary text-white" role="button" id="login-dropdown" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Accounts
+                </button>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="login-dropdown">
+                    <a class="dropdown-item" routerLink="/registration">Register</a>
+                    <a class="dropdown-item" routerLink="/userLogin">User Login</a>
+                    <a class="dropdown-item" routerLink="/Admin-login">Admin Login</a>
+                </div>
+            </div>
+
+    </nav>
+  </div>
+
+<router-outlet></router-outlet>
+
+<footer class="text-center">
+    <a class="up-arrow" href="#myPage" data-toggle="tooltip" title="TO TOP">
+      <span class="glyphicon glyphicon-chevron-up"></span>
+    </a><br><br>
+    <p><a href="#">ADOS Corp.Inc</a></p> 
+</footer>

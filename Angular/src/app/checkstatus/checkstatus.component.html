@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="text-center pt-5 pb-2">
+    <h4>Enter Your SRN Number To Track your Application Status</h4>
+  </div>
+  <div class="col-sm-6 m-auto main-block p-4">
+    <div class="form-group">
+      <label for="search">SRN:</label>
+      <input type="number" class="form-control" id="search" #srnno>
+    </div>
+    <button type="button" class="btn btn-lightpink" (click)="Search(srnno.value)">Search</button>
+    <hr>
+    <div *ngIf="exists">
+      <table class="table table-striped">
+        <tr class="table-secondary">
+          <th>Application Status</th>
+        </tr>
+      
+        <tr>
+          <td>{{srn}}</td>
+        </tr>
+      </table>
+    </div>
+    <div *ngIf="error" class="alert alert-danger">
+      {{error_message}}
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--<form>
+    <input type="text" placeholder="Search.." name="search">
+    <button type="submit"><i class="fa fa-search"></i></button>
+  </form>-->

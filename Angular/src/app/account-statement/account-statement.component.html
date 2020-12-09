@@ -1,0 +1,59 @@
+<div class="dropdown-divider"></div>
+
+<div class="main-block p-2">
+    <div class="container Lato">
+        <div class="card-header">
+            <div class="h5">Account Statement:</div>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-sm-6 form-group row">
+                    <label class="col-sm-auto col-form-label">From:</label>
+                    <input type="date" class="form-control col-sm-5" [(ngModel)]="startdate">
+                </div>
+                <div class="col-sm-6 form-group row">
+                    <label class="col-auto">To:</label>
+                    <label class="col-auto"><b>{{enddate}}</b></label>
+                </div>
+            </div>
+
+            <button type="button" class="btn btn-lightpink btn-block" (click)="showtrans()">Show Transactaction</button>
+            
+        </div>
+       
+    </div>
+
+</div>
+
+<div class="dropdown-divider"></div>
+
+
+<div class="tranasctions-box">
+    <div class="table-responsive bg-light rounded border border-secondary Lato">
+        <table class="table table-striped">
+            <thead>
+                <th>Reference Id</th>
+                <th>Mode</th>
+                <th>Beneficiary Account</th>
+                <th>Paid From Account</th>
+                <th>Amount</th>
+                <th>Transaction Date</th>
+                <th>Status</th>
+                <th>Remark</th>
+            </thead>
+
+            <tr *ngFor="let add of tdetails1">
+                <td>{{add.reference_id}}</td>
+                <td>{{add.mode}}</td>
+                <td>{{add.paid_to_acc_num}}</td>
+                <td>{{add.from_acc_num}}</td>
+                <td *ngIf="add.debited"><span class="text-danger">&#x20B9;{{add.amount + add.tax}}</span></td>
+                <td *ngIf="add.credited"><span class="text-success">&#x20B9;{{add.amount + add.tax}}</span></td>
+                <td>{{add.trans_time| date:'yyyy-MM-dd'}}</td>
+                <td>{{add.tran_status}}</td>
+                <td>{{add.remark}}</td>
+            </tr>
+        </table>
+
+    </div>
+</div>

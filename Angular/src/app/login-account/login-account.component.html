@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="text-center pt-5 pb-2">
+    <h4>Login to Your Admin Account</h4>
+  </div>
+  <div class="col-sm-6 m-auto main-block p-4">
+    <form [formGroup]="LoginAccountGroup" (ngSubmit)="LoginAccount()">
+      <div class="form-group">
+        <label for="admin_id">Admin Id</label>
+        <input type="text" class="form-control" formControlName="admin_id" name="admin_id" id="admin_id">
+        <div class="alert alert-danger"
+          *ngIf="LoginAccountGroup.get('admin_id').errors && LoginAccountGroup.get('admin_id').touched">
+          <small *ngIf="LoginAccountGroup.get('admin_id').errors.required">
+            Admin Id is required
+          </small>
+          <small *ngIf="LoginAccountGroup.get('admin_id').errors.pattern">
+            Admin Id is numeric
+          </small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" class="form-control" formControlName="password" name="password" id="password">
+        <div class="alert alert-danger"
+          *ngIf="LoginAccountGroup.get('password').errors && LoginAccountGroup.get('password').touched">
+          <small *ngIf="LoginAccountGroup.get('password').errors.required">
+            Password is required
+          </small>
+        </div>
+      </div>
+      <div class="text-center">
+        <button type="submit" class="btn btn-lightpink">Submit</button>
+      </div>      
+      <div *ngIf="errorExists">
+        <div class="alert alert-danger">
+          {{error}}
+        </div>
+      </div>
+  
+  
+    </form>
+  </div>
+</div>

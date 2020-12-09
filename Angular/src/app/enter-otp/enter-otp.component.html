@@ -1,0 +1,50 @@
+<div *ngIf="user_id_sent; else elseblock">
+    <div class="account_locked">
+        <div class="inner-block">
+            <div class="jumbotron jumbotron-fluid alert-success border border-dark">
+                <div class="container">
+                    <h5 class="display-4">Correct OTP Entered</h5>
+                    <p class="lead">Successfully Sent the User ID to your Mobile Number.</p>
+                    <hr class="my-4">
+                    <p class="lead">
+                        <a routerLink="/userLogin" class="btn btn-lightpink">
+                            Go Back to Login
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<ng-template #elseblock>
+    <div class="container">
+        <div class="text-center pt-5 pb-2">
+            <h4>Enter OTP</h4>
+        </div>
+        <div class="col-sm-6 m-auto main-block p-4">
+        <form [formGroup]="EnterOtp" (ngSubmit)="enterOtp()">
+            <div class="form-group">
+                <label for="otp">Enter OTP</label>
+                <input type="text" class="form-control" formControlName="otp" name="otp" id="otp" required>
+                <div class="alert alert-danger"
+                    *ngIf="EnterOtp.get('otp').errors && EnterOtp.get('otp').touched">
+                    <small *ngIf="EnterOtp.get('otp').errors.required">
+                        OTP is required.
+                    </small>
+                    <small *ngIf="EnterOtp.get('otp').errors.pattern">
+                        Not a valid OTP (Only contians numbers).
+                    </small>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-lightpink btn-block">Enter OTP</button>
+            <br>
+            {{message}}
+            <br>
+            <div *ngIf="resend">
+                <button class="btn btn-sm btn-outline-secondary"(click)="Resend()">Resend OTP</button>
+            </div>
+        </form>
+    </div>
+    </div>
+</ng-template>
+

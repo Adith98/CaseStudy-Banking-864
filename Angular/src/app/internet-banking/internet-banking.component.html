@@ -1,0 +1,76 @@
+<div class="container">
+  <div class="text-center pt-5 pb-2">
+    <h4>Set New Passwords</h4>
+  </div>
+  <div class="col-sm-6 m-auto main-block p-4">
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <h2 class="sr-only">Login Form</h2>
+      <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
+      <div class="form-group">
+        <label for="account_number">Enter Account Number</label>
+        <input type="number" class="form-control" formControlName="account_number" name="account_number"
+          id="account_number">
+        <div class="alert alert-danger" *ngIf="form.get('account_number').errors && form.get('account_number').touched">
+          <small *ngIf="form.get('account_number').errors.required">
+            Account Number is required
+          </small>
+  
+        </div>
+      </div>
+      <div class="form-group"> <label for="login_password">Login Password</label>
+        <input type="password" class="form-control" formControlName="login_password" name="login_password"
+          id="login_password">
+        <div class="alert alert-danger" *ngIf="form.get('login_password').errors && form.get('login_password').touched">
+          <small *ngIf="form.get('login_password').errors.required">
+            Password is required
+          </small>
+          <small *ngIf="form.get('login_password').errors.pattern">
+            Invalid Password. Must consist 8 characters which should include atleast one uppercase, lowercase, number and a special character.
+          </small>
+        </div>
+      </div>
+      <div class="form-group"> <label for="confirm_login_password">Confirm Login Password</label>
+        <input type="password" class="form-control" formControlName="confirm_login_password"  name="confirm_login_password" id="confirm_login_password">
+        <div class="alert alert-danger"
+          *ngIf="form.get('confirm_login_password').errors && form.get('confirm_login_password').touched">
+          <small *ngIf="form.get('confirm_login_password').errors.required">
+            Password is required
+          </small>
+          <small *ngIf="!form.get('confirm_login_password').errors.required">
+            Password dont match
+          </small>
+        </div>
+      </div>
+      <div class="form-group"> <label for="transaction_password">Transaction Password</label>
+        <input type="password" class="form-control" formControlName="transaction_password" name="transaction_password"
+          id="transaction_password">
+        <div class="alert alert-danger"
+          *ngIf="form.get('transaction_password').errors && form.get('transaction_password').touched">
+          <small *ngIf="form.get('transaction_password').errors.required">
+            Transaction Password is required
+          </small>
+          <small *ngIf="form.get('transaction_password').errors.pattern">
+            Invalid Transaction Password. Must consist 8 characters which should include atleast one uppercase, lowercase, number and a special character.
+          </small>
+        </div>
+      </div>
+      <div class="form-group"> <label for="confirm_transaction_password">Confirm Transaction Password</label>
+        <input type="password" class="form-control" formControlName="confirm_transaction_password"
+          name="confirm_transaction_password"  id="confirm_transaction_password">
+        <div class="alert alert-danger"
+          *ngIf="form.get('confirm_transaction_password').errors && form.get('confirm_transaction_password').touched">
+          <small *ngIf="form.get('confirm_transaction_password').errors.required">
+            Password is required
+          </small>
+          <small *ngIf="!form.get('confirm_transaction_password').errors.required">
+            Password dont match
+          </small>
+  
+        </div>
+      </div>
+      <div class="form-group"><button class="btn btn-lightpink btn-block" type="submit">Submit</button>
+      </div><a href="#" class="nav-link text-info">Forgot password?Click Here!</a>
+      {{error}}
+    </form>
+  </div>
+</div>

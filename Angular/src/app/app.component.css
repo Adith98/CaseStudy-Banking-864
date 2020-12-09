@@ -1,0 +1,136 @@
+        
+        body{
+            background-color: white;
+        }
+        
+
+           
+        .header{
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 2px;
+            border: 0;
+            opacity: 0.9;
+            background-color: #2d2d30;
+            position: -webkit-sticky;
+            position: sticky;
+            top:0;
+            z-index: 20;
+        }
+        
+        .Logo{
+            padding:10px;
+        }
+        
+        .Logo a:hover{
+            text-decoration: none;
+            color:rgb(197, 197, 197)!important;
+        }
+        
+        .nav-item-link{
+            color:white!important;
+            border-bottom:2px solid rgba(255, 255, 0, 0);
+        }
+        
+.dropdown-item:hover{
+    background-color:darkred !important;
+    color:white;
+}
+.dropdown-item{
+    letter-spacing: 2px;
+}
+
+        .main-item{
+            letter-spacing: 1.5px;
+        }
+        
+        .nav-item-link:hover{
+            text-decoration: none;
+            color:rgb(197, 197, 197)!important;
+            border-bottom:2px solid yellow;
+        
+        }
+        
+        .login-button{
+            position: absolute;
+            right:6px;
+            top:15px;
+        }
+        
+.login-dropdown{
+    z-index: 100;
+}
+
+        .btn-outline{
+            border-radius: 50px!important;
+            padding:5px;
+            width:100px;
+        }
+        
+        .btn:focus {
+            outline: none;
+            box-shadow: none;  
+          }
+        
+        .toggler{
+            position: absolute;
+            left:5px;
+            top:16px;
+        }
+        
+        
+        
+        .box{
+            border-radius: 6px;
+            margin-top: 15px;
+            box-shadow:  5px -5px 6px #c2c6c9, 
+            -5px 5px 6px #c2c6c9;
+        }
+        
+        .help{
+            display: inline-block;
+        }
+        
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            
+            
+           
+          }
+                     
+                
+                
+                .pt-1{
+        
+                display: inline;
+                padding: 15px;
+                }
+        
+        .help:hover .dropdown-content {display: block; }
+                
+                .vertical-bar {
+                    padding-top: 15px;
+                    background-color:#710F3D;
+                    color: white;
+                    opacity: 0.9;
+        
+                    position: fixed;
+                    z-index: 1;
+                }
+        
+                
+                .nav-link{
+                    color: white;
+                }
+                
+                
+                .bg-vertical-bar {
+                    box-shadow: 2px 2px 5px grey;
+                    background: #710F3D;
+                    
+                }
+        
+                .dashboard {
+                    margin-top: 50px;
+                }

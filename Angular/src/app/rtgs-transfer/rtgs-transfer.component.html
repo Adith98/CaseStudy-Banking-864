@@ -1,0 +1,115 @@
+<h5 class="Lato">RTGS Payment</h5>
+<hr>
+<div class="container">
+    <div *ngIf="continue;else impsBlock">
+        <div class='alert alert-primary'>
+            <div class="form-group">
+                <label for="transaction_password">Enter Transaction password</label>
+                <input type="password" class="form-control" name="transaction_password" [(ngModel)]="transaction_password"
+                     id="transaction_password">
+            </div>
+            <div class="btn btn-outline-primary" (click)="CheckPassword()">Enter</div>
+            <a routerLink="/forgot/transaction-password" class="nav-link text-info">Forgot Transaction password? Click Here!</a>
+            <div class="text-danger mt-1">{{password_error}}</div>
+            <div class="text-success mt-1">{{password_success}}</div>
+        </div>
+    </div>
+    <ng-template #impsBlock>
+        <form [formGroup]=RtgsForm (ngSubmit)="TransferRtgs()">
+            <b>From Account Number : {{account_number}}</b>
+            <hr>
+            <div class="form-group">
+                <label for="to_account_number">To Account Number:</label>
+                <div class="container row">
+                    <select class="form-control col-8" name="to_account_number" formControlName="to_account_number"
+                        id="to_account_number">
+                        <option *ngFor="let opt of beneficiary_list" [ngValue]="opt">{{opt}}</option>
+                    </select>
+                    <div class="col-sm-4">
+                        <button class="btn btn-outline-danger" type="button" (click)="AddBeneficiary()">Add New
+                            Beneficiary</button>
+                    </div>
+                </div>
+    
+                <div class="alert alert-danger"
+                    *ngIf="RtgsForm.get('to_account_number').errors && RtgsForm.get('to_account_number').touched">
+                    <small *ngIf="RtgsForm.get('to_account_number').errors.required">
+                        This Field is required
+                    </small>
+                    <small *ngIf="RtgsForm.get('to_account_number').errors.pattern">
+                        This field is not valid
+                    </small>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="amount">Enter Amount</label>
+                <input type="number" class="form-control" name="amount" formControlName="amount" id="amount">
+                <div class="alert alert-danger" *ngIf="RtgsForm.get('amount').errors && RtgsForm.get('amount').touched">
+                    <small *ngIf="RtgsForm.get('amount').errors.required">
+                        This Field is required
+                    </small>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="transaction_date">Transaction Date</label>
+                <input type="date" class="form-control" name="transaction_date" formControlName="transaction_date"
+                    id="transaction_date">
+                <div class="alert alert-danger"
+                    *ngIf="RtgsForm.get('transaction_date').errors && RtgsForm.get('transaction_date').touched">
+                    <small *ngIf="RtgsForm.get('transaction_date').errors.required">
+                        This Field is required
+                    </small>
+                    <!--small *ngIf="RtgsForm.get('transaction_date').errors.pattern">
+                        This field is not valid
+                    </small-->
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="maturity_Instructions">Maturity Instructions</label>
+                <input type="text" class="form-control" name="maturity_Instructions" formControlName="maturity_Instructions"
+                    id="maturity_Instructions">
+                <div class="alert alert-danger"
+                    *ngIf="RtgsForm.get('maturity_Instructions').errors && RtgsForm.get('maturity_Instructions').touched">
+                    <small *ngIf="RtgsForm.get('maturity_Instructions').errors.required">
+                        This Field is required
+                    </small>
+                </div>
+            </div>
+    
+            <div class="form-group">
+                <label for="remark">Remark</label>
+                <input type="text" class="form-control" name="remark" formControlName="remark" id="remark">
+                <div class="alert alert-danger" *ngIf="RtgsForm.get('remark').errors && RtgsForm.get('remark').touched">
+                    <small *ngIf="RtgsForm.get('remark').errors.required">
+                        This Field is required
+                    </small>
+                </div>
+            </div>
+            <div class="form-group row m-auto">
+                <div class="col-auto"><button type="submit" class="btn btn-outline-secondary">Validate</button></div>
+                <!--div class="col-auto"><button type="button" class="btn btn-warning">Save as Template</button></div-->
+                <div *ngIf="success;else resetblock">
+                    <div class="col-auto"><button type="button" (click)="Continue()" class="btn btn-info">Continue</button>
+                    </div>
+                </div>
+                <ng-template #resetblock>
+                    <div class="col-auto"><button type="reset" class="btn btn-danger">Reset</button></div>
+                </ng-template>
+            </div>
+            
+            <div *ngIf="error">
+            <div class="alert alert-danger">
+                {{message}}
+            </div>
+            </div>
+            <div *ngIf="success">
+                <div class="alert alert-success">
+                    {{message}}
+                </div>
+            </div>
+        </form>
+    </ng-template>
+</div>

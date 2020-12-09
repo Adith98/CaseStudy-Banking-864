@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="text-center pt-5 pb-2">
+        <h4>Login to Your Account</h4>
+    </div>
+    <div class="col-sm-6 m-auto main-block p-4">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+            <h2 class="sr-only">Login Form</h2>
+            <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
+            <div class="form-group"> <label for="userid">Enter User ID</label>
+                <input type="number" class="form-control" formControlName="userid" name="userid" id="userid">
+                <div class="alert alert-danger" *ngIf="form.get('userid').errors && form.get('userid').touched">
+                    <small *ngIf="form.get('userid').errors.required">
+                        userid is required
+                    </small>
+                </div>
+                <a routerLink="/forgot/user-id" class="nav-link text-info">Forgot UserId? Click Here!</a>
+            </div>
+            <div class="form-group"> <label for="login_password">Password</label>
+                <input type="password" class="form-control" formControlName="login_password" name="login_password"
+                    id="login_password">
+                <div class="alert alert-danger"
+                    *ngIf="form.get('login_password').errors && form.get('login_password').touched">
+                    <small *ngIf="form.get('login_password').errors.required">
+                        Password is required
+                    </small>
+                </div>
+                <a routerLink="/forgot/login-password" class="nav-link text-info">Forgot password?Click Here!</a>
+            </div>
+            <div class="form-group"><button class="btn btn-lightpink btn-block" type="submit">Log In</button></div>
+            
+            <a routerLink="/registration" class="nav-link text-info">Don't Have an Account? Register Here</a>
+            {{error}}
+        </form>
+    </div>
+    
+</div>
+
+
+<div *ngIf="account_locked">
+    <div class="account_locked">
+        <div class="inner-block">
+            <div class="jumbotron jumbotron-fluid alert-danger border border-dark">
+                <div class="container">
+                    <h1 class="display-4">Your account has been locked.</h1>
+                    <p class="lead">Click here to Unlock your Account by setting a new password.</p>
+                    <hr class="my-4">
+                    <p class="lead">
+                        <a routerLink="/forgot/login-password" class="btn btn-lightpink">
+                            Unlock Account
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

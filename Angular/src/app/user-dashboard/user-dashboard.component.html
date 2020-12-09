@@ -1,0 +1,67 @@
+<div class="vertical-bar col-lg-2">
+    <nav class="navbar-expand-lg flex-lg-column pt-2">
+        <div class="row">
+            <div class="col-lg-12 col-10 ">
+                <div class="h5">
+                    <span class="material-icons d-inline-block align-top">account_circle
+                    </span>
+                    {{userdetails.first_name}} {{userdetails.last_name}}
+                </div>
+            </div>
+            <div class="col-lg-12 col-2 text-right">
+                <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#verticalBar">
+                    <span class="material-icons text-black">
+                        arrow_drop_down_circle
+                    </span>
+                </button>
+            </div>
+        </div>
+        <div class="border-top border-white"></div>
+        <div class="collapse navbar-collapse" id="verticalBar">
+            <nav class="nav flex-column">
+                <a class="nav-link dash-link text-white" routerLink="/userdashboard/Account-Details">ACCOUNT DETAILS</a>
+                <a class="nav-link dash-link text-white" routerLink="/userdashboard/Account-Summary">ACCOUNT SUMMARY</a>
+                <div *ngIf="net_banking">
+                    <a class="nav-link dash-link text-white" routerLink="/userdashboard/Fund-Transfer">FUND TRANSFER</a>
+                </div>
+                <a class="nav-link dash-link text-white" routerLink="/userdashboard/Account-Statement">ACCOUNT STATEMENT</a>
+                <div class="border-top border-white"></div>
+                <button class="btn dash-link text-warning text-left" (click)="changePassword()">Change Password</button>
+                <button class="btn dash-link text-warning text-left" (click)="logout()">Logout</button>
+                <hr>
+                <p><b>Last Login:</b><br> {{last_login}}</p>
+            </nav>
+        </div>
+    </nav>
+</div>
+
+<div class="container-fluid mt-3">
+    <div class="row">
+        <div class="bg-vertical-bar col-lg-2"></div>
+        <div class="dashboard col-lg-10">
+            <div class="account-balance main-block col-12 m-auto p-2 WorkSans">
+                <div class="row">
+                    <div class="col-sm-auto pt-1">Account No: <b>{{accountsummary.account_number}}</b></div>
+                    <div class="col-sm-auto pt-1">Account Type: <b>{{accountsummary.account_type}}</b></div>
+                </div>
+                <hr>
+                <div class="container text-center">
+                    <table class="table">
+                        <tbody>
+                            <tr><span class="h5 align-text-bottom text-muted">My Total Balance:</span></tr>
+                            <tr>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tr>
+                            <tr><span class="h2 align-text-bottom">&#x20B9; {{accountsummary.current_balance}}</span></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <router-outlet></router-outlet>
+         
+
+            
+            
+        </div>
+    </div>
+</div>
+

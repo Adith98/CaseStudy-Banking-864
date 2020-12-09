@@ -1,0 +1,465 @@
+
+<div class="container m-auto main-block p-3 p-md-5">
+    <h4>Create Your Account:</h4>
+    <hr>
+    <div class="col-sm-8 m-auto">
+        <form [formGroup]="Registration" (ngSubmit)="register()">
+
+            <div id="title" class="form-group">
+                <label>Title</label>
+                    <select name="title" formControlName="title" class="form-control form-control-sm">
+                        <option>Mr.</option>
+                        <option>Mrs.</option>
+                        <option>Ms.</option>
+                    </select>
+                <div class="alert alert-danger"
+                    *ngIf="Registration.get('title').errors && Registration.get('title').touched">
+                    <small *ngIf="Registration.get('title').errors.required">
+                        Title is required
+                    </small>
+                </div>
+            </div>
+    
+            <div id="first_name" class="form-group">
+                <label>First Name</label>
+                <input type="text" class="form-control" name="first_name" formControlName="first_name"
+                    placeholder="Enter First Name">
+                <div class="alert alert-danger"
+                    *ngIf="Registration.get('first_name').errors && Registration.get('first_name').touched">
+                    <small *ngIf="Registration.get('first_name').errors.required">
+                        First Name is required
+                    </small>
+                    <!--
+                    <small *ngIf="email.errors.email">
+                        Invalid Email
+                    </small>
+                    -->
+                </div>
+    
+            </div>
+    
+            <div id="middle_name" class="form-group">
+                <label>Middle Name</label>
+                <input type="text" class="form-control" name="middle_name" formControlName="middle_name"
+                    placeholder="Enter Middle Name">
+                <div class="alert alert-danger"
+                    *ngIf="Registration.get('middle_name').errors && Registration.get('middle_name').touched">
+                    <small *ngIf="Registration.get('middle_name').errors.required">
+                        Middle Name is required
+                    </small>
+                    <!--
+                    <small *ngIf="email.errors.email">
+                        Invalid Email
+                    </small>
+                    -->
+                </div>
+            </div>
+    
+            <div id="last_name" class="form-group">
+                <label>Last Name</label>
+                <input type="text" class="form-control" name="last_name" formControlName="last_name"
+                    placeholder="Enter Last Name">
+                <div class="alert alert-danger"
+                    *ngIf="Registration.get('last_name').errors && Registration.get('last_name').touched">
+                    <small *ngIf="Registration.get('last_name').errors.required">
+                        Last Name is required
+                    </small>
+                </div>
+            </div>
+    
+            <div id="fathers_name" class="form-group">
+                <label>Father's Name</label>
+                <input type="text" class="form-control" name="fathers_name" formControlName="fathers_name"
+                    placeholder="Enter Father's Name">
+                <div class="alert alert-danger"
+                    *ngIf="Registration.get('fathers_name').errors && Registration.get('fathers_name').touched">
+                    <small *ngIf="Registration.get('fathers_name').errors.required">
+                        Father's Name is required
+                    </small>
+                </div>
+            </div>
+    
+            <div id="mobile_number" class="form-group">
+                <label>Mobile Number</label>
+                <input type="text" class="form-control" name="mobile_number" formControlName="mobile_number"
+                    placeholder="Enter Mobile Number">
+                <div class="alert alert-danger"
+                    *ngIf="Registration.get('mobile_number').errors && Registration.get('mobile_number').touched">
+                    <small *ngIf="Registration.get('mobile_number').errors.required">
+                        Mobile Number is required
+                    </small>
+                    <small *ngIf="Registration.get('mobile_number').errors?.pattern">
+                        Invalid Phone
+                    </small>
+                </div>
+            </div>
+    
+            <div id="email" class="form-group">
+                <label>Email</label>
+                <input type="text" class="form-control" name="email" formControlName="email" placeholder="Enter Email">
+                <div class="alert alert-danger"
+                    *ngIf="Registration.get('email').errors && Registration.get('email').touched">
+                    <small *ngIf="Registration.get('email').errors.required">
+                        Email is required
+                    </small>
+    
+                    <small *ngIf="Registration.get('email').errors.email">
+                        Invalid Email
+                    </small>
+    
+                </div>
+            </div>
+    
+            <div id="aadhar" class="form-group">
+                <label>Aadhar Number</label>
+                <input type="text" class="form-control" name="aadhar" formControlName="aadhar"
+                    placeholder="Enter Aadhar Number">
+                <div class="alert alert-danger"
+                    *ngIf="Registration.get('aadhar').errors && Registration.get('aadhar').touched">
+                    <small *ngIf="Registration.get('aadhar').errors.required">
+                        Aadhar Number is required
+                    </small>
+                    <small *ngIf="Registration.get('aadhar').errors.pattern">
+                        Invalid Aadhar Number
+                    </small>
+                </div>
+            </div>
+    
+            <div id="pan_card" class="form-group">
+                <label>Pan Card Number</label>
+                <input type="text" class="form-control" name="pan_card" formControlName="pan_card"
+                    placeholder="Enter Pan Card Number">
+                <div class="alert alert-danger"
+                    *ngIf="Registration.get('pan_card').errors && Registration.get('pan_card').touched">
+                    <small *ngIf="Registration.get('pan_card').errors.required">
+                        Pan Card Number is required
+                    </small>
+                    <small *ngIf="Registration.get('pan_card').errors.pattern">
+                        Pan Card Number is of invalid pattern
+                    </small>
+                </div>
+            </div>
+    
+            <div id="pan_doc" class="form-group">
+                <label>Pan Card Document: </label>&nbsp;
+                <input type="file" name="pan_doc" formControlName="pan_doc" placeholder="Enter Pan Card Document">
+                <div class="alert alert-danger"
+                    *ngIf="Registration.get('pan_doc').errors && Registration.get('pan_doc').touched">
+                    <small *ngIf="Registration.get('pan_doc').errors.required">
+                        Pan Card Document is required
+                    </small>
+                    <!--
+                    <small *ngIf="email.errors.email">
+                        Invalid Email
+                    </small>
+                    -->
+                </div>
+            </div>
+    
+            <div id="dob" class="form-group">
+                <label>Date Of Birth</label>
+                <input type="date" class="form-control col-sm-5" name="dob" formControlName="dob"
+                    placeholder="Enter Date Of Birth">
+                <div class="alert alert-danger" *ngIf="Registration.get('dob').errors && Registration.get('dob').touched">
+                    <small *ngIf="Registration.get('dob').errors.required">
+                        Date Of Birth is required
+                    </small>
+                    <!--
+                    <small *ngIf="email.errors.email">
+                        Invalid Email
+                    </small>
+                    -->
+                </div>
+            </div>
+    
+            <hr>
+            <fieldset class="border border-danger p-4">
+                <legend class="bg-secondary p-2 text-white"><span class="h5">Permanent Address</span></legend>
+                <div id="line_1" class="form-group">
+                    <label>Line 1</label>
+                    <input type="text" class="form-control" name="line_1" formControlName="line_1"
+                        placeholder="Enter Line 1">
+                    <div class="alert alert-danger"
+                        *ngIf="Registration.get('line_1').errors && Registration.get('line_1').touched">
+                        <small *ngIf="Registration.get('line_1').errors.required">
+                            Line 1 is required
+                        </small>
+                        <small *ngIf="Registration.get('line_1').errors.pattern">
+                            Invalid Line 1
+                        </small>
+                    </div>
+                </div>
+                <div id="line_2" class="form-group">
+                    <label>Line 2</label>
+                    <input type="text" class="form-control" name="line_2" formControlName="line_2"
+                        placeholder="Enter Line 2">
+                    <div class="alert alert-danger"
+                        *ngIf="Registration.get('line_2').errors && Registration.get('line_2').touched">
+                        <small *ngIf="Registration.get('line_2').errors.required">
+                            Line 2 is required
+                        </small>
+                        <small *ngIf="Registration.get('line_2').errors.pattern">
+                            Invalid Line 2
+                        </small>
+                    </div>
+                </div>
+                <div id="landmark" class="form-group">
+                    <label>Landmark</label>
+                    <input type="text" class="form-control" name="landmark" formControlName="landmark"
+                        placeholder="Enter Landmark">
+                    <div class="alert alert-danger"
+                        *ngIf="Registration.get('landmark').errors && Registration.get('landmark').touched">
+                        <small *ngIf="Registration.get('landmark').errors.required">
+                            Landmark is required
+                        </small>
+                    </div>
+                </div>
+                <div id="state" class="form-group">
+                    <label>State</label>
+                    <input type="text" class="form-control" name="state" formControlName="state" placeholder="Enter State">
+                    <div class="alert alert-danger"
+                        *ngIf="Registration.get('state').errors && Registration.get('state').touched">
+                        <small *ngIf="Registration.get('state').errors.required">
+                            State is required
+                        </small>
+                    </div>
+                </div>
+                <div id="city" class="form-group">
+                    <label>City</label>
+                    <input type="text" class="form-control" name="city" formControlName="city" placeholder="Enter City">
+                    <div class="alert alert-danger"
+                        *ngIf="Registration.get('city').errors && Registration.get('city').touched">
+                        <small *ngIf="Registration.get('city').errors.required">
+                            City is required
+                        </small>
+                    </div>
+                </div>
+                <div id="pin_code" class="form-group">
+                    <label>Pin Code</label>
+                    <input type="text" class="form-control" name="pin_code" formControlName="pin_code"
+                        placeholder="Enter Pin Code">
+                    <div class="alert alert-danger"
+                        *ngIf="Registration.get('pin_code').errors && Registration.get('pin_code').touched">
+                        <small *ngIf="Registration.get('pin_code').errors.required">
+                            Pin Code is required
+                        </small>
+                        <small *ngIf="Registration.get('pin_code').errors.pattern">
+                            Invalid Pin Code
+                        </small>
+                    </div>
+                </div>
+            </fieldset>
+    
+    
+            <fieldset class="border border-danger p-4 mt-2">
+                <legend class="bg-secondary p-2 text-white"><span class="h5">Residential Address</span></legend>
+    
+                <div class="form-group mt-2">
+                    <label class="control-label">Same As Permanent: &nbsp;</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="type_of_address"
+                            formControlName="type_of_address" id="same" value="Yes" (click)="Yes()" checked>
+                        <label class="form-check-label" for="same">Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="type_of_address"
+                            formControlName="type_of_address" id="not_same" value="No" (click)="No()">
+                        <label class="form-check-label" for="not_same">No</label>
+                    </div>
+                </div>
+    
+                <div id="Residential">
+                    <div id="line_1_residential" class="form-group">
+                        <label>Line 1</label>
+                        <input type="text" class="form-control" name="line_1_residential"
+                            formControlName="line_1_residential" placeholder="Enter Line 1">
+                        <div class="alert alert-danger"
+                            *ngIf="Registration.get('line_1_residential').errors && Registration.get('line_1_residential').touched">
+                            <small *ngIf="Registration.get('line_1_residential').errors.required">
+                                Line 1 is required
+                            </small>
+                            <small *ngIf="Registration.get('line_1_residential').errors.pattern">
+                                Invalid Line 1
+                            </small>
+                        </div>
+                    </div>
+                    <div id="line_2_residential" class="form-group">
+                        <label>Line 2</label>
+                        <input type="text" class="form-control" name="line_2_residential"
+                            formControlName="line_2_residential" placeholder="Enter Line 2">
+                        <div class="alert alert-danger"
+                            *ngIf="Registration.get('line_2_residential').errors && Registration.get('line_2_residential').touched">
+                            <small *ngIf="Registration.get('line_2_residential').errors.required">
+                                Line 2 is required
+                            </small>
+                            <small *ngIf="Registration.get('line_2_residential').errors.pattern">
+                                Invalid Line 2
+                            </small>
+                        </div>
+                    </div>
+                    <div id="landmark_residential" class="form-group">
+                        <label>Landmark</label>
+                        <input type="text" class="form-control" name="landmark_residential"
+                            formControlName="landmark_residential" placeholder="Enter Landmark_residential">
+                        <div class="alert alert-danger"
+                            *ngIf="Registration.get('landmark_residential').errors && Registration.get('landmark_residential').touched">
+                            <small *ngIf="Registration.get('landmark_residential').errors.required">
+                                Landmark is required
+                            </small>
+                        </div>
+                    </div>
+                    <div id="state_residential" class="form-group">
+                        <label>State</label>
+                        <input type="text" class="form-control" name="state_residential" formControlName="state_residential"
+                            placeholder="Enter State_residential">
+                        <div class="alert alert-danger"
+                            *ngIf="Registration.get('state_residential').errors && Registration.get('state_residential').touched">
+                            <small *ngIf="Registration.get('state_residential').errors.required">
+                                State is required
+                            </small>
+                        </div>
+                    </div>
+                    <div id="city_residential" class="form-group">
+                        <label>City</label>
+                        <input type="text" class="form-control" name="city_residential" formControlName="city_residential"
+                            placeholder="Enter City_residential">
+                        <div class="alert alert-danger"
+                            *ngIf="Registration.get('city_residential').errors && Registration.get('city_residential').touched">
+                            <small *ngIf="Registration.get('city_residential').errors.required">
+                                City is required
+                            </small>
+                        </div>
+                    </div>
+                    <div id="pin_code_residential" class="form-group">
+                        <label>Pin Code</label>
+                        <input type="text" class="form-control" name="pin_code_residential"
+                            formControlName="pin_code_residential" placeholder="Enter Pin Code">
+                        <div class="alert alert-danger"
+                            *ngIf="Registration.get('pin_code_residential').errors && Registration.get('pin_code_residential').touched">
+                            <small *ngIf="Registration.get('pin_code_residential').errors.required">
+                                Pin Code is required
+                            </small>
+                            <small *ngIf="Registration.get('pin_code_residential').errors.pattern">
+                                Invalid Pin Code
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+    
+    
+    
+            <hr>
+    
+    
+            <div id="occupation_type" class="form-group">
+                <label>Occupation Type</label>
+                <input type="text" class="form-control" name="occupation_type" formControlName="occupation_type"
+                    placeholder="Enter Occupation Type">
+                <div class="alert alert-danger"
+                    *ngIf="Registration.get('occupation_type').errors && Registration.get('occupation_type').touched">
+                    <small *ngIf="Registration.get('occupation_type').errors.required">
+                        Occupation Type is required
+                    </small>
+                </div>
+            </div>
+    
+            <div id="source_of_income" class="form-group">
+                <label>Source of Income</label>
+                <input type="text" class="form-control" name="source_of_income" formControlName="source_of_income"
+                    placeholder="Enter Source Of Income">
+                <div class="alert alert-danger"
+                    *ngIf="Registration.get('source_of_income').errors && Registration.get('source_of_income').touched">
+                    <small *ngIf="Registration.get('source_of_income').errors.required">
+                        Source Of Income is required
+                    </small>
+                    <!--
+                    <small *ngIf="email.errors.email">
+                        Invalid Email
+                    </small>
+                    -->
+                </div>
+            </div>
+    
+            <div id="gross_annual_income" class="form-group">
+                <label>Gross Annual Income</label>
+                <input type="text" class="form-control" name="gross_annual_income" formControlName="gross_annual_income"
+                    placeholder="Enter Gross Annual Income">
+                <div class="alert alert-danger"
+                    *ngIf="Registration.get('gross_annual_income').errors && Registration.get('gross_annual_income').touched">
+                    <small *ngIf="Registration.get('gross_annual_income').errors.required">
+                        Gross Annual Income is required
+                    </small>
+                    <!--
+                    <small *ngIf="email.errors.email">
+                        Invalid Email
+                    </small>
+                    -->
+                </div>
+            </div>
+            <hr>
+            <div id="debit_card" class="form-group">
+                <label>Opt For Debit Card?</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="debit_card" id="Yes" formControlName="debit_card"
+                        value="true" />
+                    <label class="form-check-label" for="Yes" class="radio">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="debit_card" id="No" formControlName="debit_card"
+                        value="false" />
+                    <label class="form-check-label" for="No" class="radio">No</label>
+                </div>
+                <div class="alert alert-danger"
+                    *ngIf="Registration.get('debit_card').errors && Registration.get('debit_card').touched">
+                    <small *ngIf="Registration.get('').errors.required">
+                        Choose an Option
+                    </small>
+                </div>
+            </div>
+            
+            <div id="net_banking" class="form-group">
+                <label>Opt For Net banking?</label><br>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="Yes_NB" name="net_banking"
+                        formControlName="net_banking" value="true" />
+                    <label class="form-check-label" for="Yes_NB" class="radio">Yes</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" id="No_NB" name="net_banking" formControlName="net_banking"
+                        value="false" />
+                    <label class="form-check-label" for="No_NB" class="radio">No</label>
+                </div>
+    
+                <div class="alert alert-danger"
+                    *ngIf="Registration.get('net_banking').errors && Registration.get('net_banking').touched">
+                    <small *ngIf="Registration.get('').errors.required">
+                        Choose an Option
+                    </small>
+                </div>
+            </div>
+    
+            <hr>
+            <div class="form-group text-center">
+                <input type="submit" class="btn btn-lg btn-lightpink" value="Register">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div *ngIf="registration_done">
+    <div class="SRN-block">
+        <div class="inner-block">
+            <div class="jumbotron jumbotron-fluid alert-danger border border-dark">
+                <div class="container">
+                    <h1 class="display-4">Successfully registered.</h1>
+                    <hr>                   
+                    <p class="lead">SRN Number:<b>{{data}}</b></p>
+                    <hr class="my-4">
+                    <p class="lead">Track Your Registration Status Here:</p>
+                    <a routerLink="/track-status">Link to track SRN</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

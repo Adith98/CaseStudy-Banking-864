@@ -1,0 +1,74 @@
+<p>admin-approval works!</p>
+
+<table class="table table-striped">
+    <tr class="table-secondary">
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Middle_Name</th>
+        <th>Last_Name</th>
+        <th>Contact No</th>
+        <th>Email</th>
+        <th>Aadhar</th>
+        <th>Pan Card</th>
+    </tr>
+
+    <tr *ngFor="let cust of custdetails">
+      <td>{{cust.cust_id}}</td>
+      <td>{{cust.first_name}}</td>
+      <td>{{cust.middle_name}}</td>
+      <td>{{cust.last_name}}</td>
+      <td>{{cust.mobile_number}}</td>
+      <td>{{cust.email}}</td>
+      <td>{{cust.aadhar}}</td>
+      <td>{{cust.pan_card}}</td>        
+    </tr>
+</table>
+<br><br><br>
+<hr>
+<table class="table table-striped">
+  <tr class="table-success">
+      <th>Dob</th>
+      <th>Occupation type</th>
+      <th>Source of income</th>
+      <th>Annual Income</th>
+      <th>Debit Card</th>
+      <th>Net Banking</th>
+      </tr>
+
+  <tr *ngFor="let cust of custdetails">   
+    <td>{{cust.dob| date:'yyyy-MM-dd'}}</td>
+    <td>{{cust.occupation_type}}</td>
+    <td>{{cust.source_of_income}}</td>
+    <td>{{cust.gross_annual_income}}</td>
+    <td>{{cust.debit_card}}</td>
+    <td>{{cust.net_banking}}</td>       
+  </tr>
+</table>
+<br><br><br>
+<hr>
+<table class="table table-striped">
+  <tr class="table-warning">
+      <th>Type of Address</th>
+      <th>Line 1</th>
+      <th>Line 2</th>
+      <th>Landmark</th>
+      <th>City</th>
+      <th>State</th>
+      <th>pincode</th>
+    </tr>
+
+  <tr *ngFor="let add of custaddress">   
+    <td>{{add.type_of_address}}</td>
+    <td>{{add.line1}}</td>
+    <td>{{add.line2}}</td>
+    <td>{{add.landmark}}</td>
+    <td>{{add.city}}</td>
+    <td>{{add.cust_state}}</td>
+    <td>{{add.pin_code}}</td>      
+  </tr>
+</table>
+
+<br><br><br><br><br>
+<hr>
+<button type="button" class="btn btn-success btn-lg" (click)="Accept()">Accept</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<button type="button" class="btn btn-danger btn-lg" (click)="Reject()">Reject</button>

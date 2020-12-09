@@ -1,0 +1,71 @@
+/* You can add global styles to this file, and also import other style files */
+body{
+    background:#f1f7fc;
+}
+
+.main-block {
+    border-radius: 9px;
+    background-color: #ffffff;
+    box-shadow:  5px 5px 10px #969696, 
+             -5px -5px 10px #ffffff;
+}
+
+.WorkSans{
+    font-family: 'Work Sans',sans-serif;
+}
+
+.Montserrat{
+    font-family: Montserrat, sans-serif;
+    letter-spacing: 2px;
+}
+
+.Lato{
+    font-family:'Lato',sans-serif;
+}
+
+.btn-lightpink{
+    color:#f4476b;
+    border:1px solid #f4476b;
+}
+
+.btn-lightpink:hover{
+    background:#eb3b60;
+    color: white;
+}
+
+label{
+    font-family: Montserrat, sans-serif;
+    letter-spacing: 2px;
+}
+
+.bg-vertical-bar {
+    box-shadow: 2px 2px 5px grey;
+    background: #710F3D;
+    
+}
+
+.admin-nav{
+    background: #710F3D;
+}
+.vertical-bar {
+    padding-top: 15px;
+    background-color:#710F3D;
+    color: white;
+
+    position: fixed;
+    z-index: 1;
+}
+
+.dashboard {
+    margin-top: 50px;
+}
+
+.dash-link{
+    font-family: Montserrat, sans-serif;
+}
+
+.dash-link:hover{
+    background-color: #8d0d49;
+    color: rgb(219, 219, 219);
+}
+

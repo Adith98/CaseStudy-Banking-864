@@ -1,0 +1,41 @@
+
+
+<div class="container mt-4">
+    <button class="btn btn-lightpink mb-2" routerLink="/userdashboard/Account-Details">Go Back</button>
+    <div class="table-responsive bg-light rounded border border-secondary">
+        <table class="table table-bordered">
+            <tr>
+                <th>Reference Id</th>
+                <th>{{transaction_receipt.reference_id}}</th>
+            </tr>
+            <tr>
+                <th>Transferred to Account Number</th>
+                <th>{{transaction_receipt.paid_to_acc_num}}</th>
+            </tr>
+            <tr>
+                <th>Amount</th>
+                <th>&#x20B9;{{transaction_receipt.amount}}</th>
+            </tr>
+            <tr>
+                <th>Mode</th>
+                <th>{{transaction_receipt.mode}}</th>
+            </tr>
+            <tr>
+                <th>Tax</th>
+                <th>&#x20B9;{{transaction_receipt.tax}}</th>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <th>{{transaction_receipt.tran_status}}</th>
+            </tr>
+            <tr>
+                <th>Transaction Time</th>
+                <th>{{transaction_receipt.trans_time| date:'yyyy-MM-dd'}}</th>
+            </tr>
+            <tr>
+                <th>Remark</th>
+                <th>{{transaction_receipt.remark}}</th>
+            </tr>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,113 @@
+public HttpResponseMessage UserLogin(int userid, string login_password)
+        {
+            bool Exists = false;
+            AccountHolder ah = new AccountHolder();
+
+            var user = (from acc_holder in db.AccountHolders
+                        where acc_holder.user_id == userid
+                        select acc_holder.login_password).FirstOrDefault();
+            var a = user;
+
+            if (a != null)
+            {
+                System.Text.UTF8Encoding encoder = new System.Text.UTF8Encoding();
+                System.Text.Decoder utf8Decode = encoder.GetDecoder();
+                byte[] todecode_byte = Convert.FromBase64String(a);
+                int charCount = utf8Decode.GetCharCount(todecode_byte, 0, todecode_byte.Length);
+                char[] decoded_char = new char[charCount];
+                utf8Decode.GetChars(todecode_byte, 0, todecode_byte.Length, decoded_char, 0);
+                string decrypt_login_password = new String(decoded_char);
+
+
+                List<AccountHolder> ahs = db.AccountHolders.ToList();
+                foreach (var item in ahs)
+                {
+                    if (item.user_id == userid)
+                    {
+                        Exists = true;
+                        ah = item;
+                        break;
+                    }
+                }
+
+                if (Exists)
+                {
+                    int status = Convert.ToInt32(ah.account_status);
+                    if (status < 3)
+                    {
+                        if (decrypt_login_password == login_password)
+                        {
+                            ah.account_status = "0";
+                            db.SaveChanges();
+
+                            if (ah.last_login == null)
+                            {
+                                if (ah.CustomerDetail.net_banking)
+                                {
+                                    ah.last_login = DateTime.Now;
+                                    db.SaveChanges();
+                                    return Request.CreateResponse(HttpStatusCode.OK, "First Login");
+                                }
+                                else
+                                {
+                                    ah.last_login = DateTime.Now;
+                                    db.SaveChanges();
+                                    return Request.CreateResponse(HttpStatusCode.OK, "First Login Without Net Banking");
+                                }
+
+                            }
+                            else
+                            {
+                                ah.last_login = DateTime.Now;
+                                db.SaveChanges();
+                                if (ah.CustomerDetail.net_banking)
+                                {
+                                    return Request.CreateResponse(HttpStatusCode.OK, "Success");
+                                }
+                                else
+                                {
+                                    return Request.CreateResponse(HttpStatusCode.OK, "Success Without Net Banking");
+                                }
+                            }
+                        }
+
+                        else
+                        {
+                            status += 1;
+                            if (status >= 3)
+                            {
+                                ah.account_status = "3";
+                                db.SaveChanges();
+                                return Request.CreateResponse(HttpStatusCode.OK, "Failed after 3 unsuccessful login attempts");
+
+                            }
+                            else
+                            {
+                                ah.account_status = status.ToString();
+                                db.SaveChanges();
+                                return Request.CreateResponse(HttpStatusCode.OK, "Wrong Password");
+
+                            }
+
+                        }
+
+                    }
+                    else
+                    {
+                        return Request.CreateResponse(HttpStatusCode.OK, "Account Already Locked!");
+                    }
+
+
+                }
+                else
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, "Invalid User id");
+                }
+            }
+            else
+            {
+                return Request.CreateResponse(HttpStatusCode.OK, "Invalid User id");
+            }
+
+
+        }

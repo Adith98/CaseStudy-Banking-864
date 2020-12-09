@@ -1,0 +1,56 @@
+<div class="admin-nav">
+    <nav class="navbar navbar-expand-lg pt-2">
+
+
+        <div class="h5 text-white">
+            {{admin_id}}
+        </div>
+
+        <button class="btn navbar-toggler" type="button" data-toggle="collapse" data-target="#verticalBar">
+            <span class="material-icons text-black">
+                arrow_drop_down_circle
+            </span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="verticalBar">
+            <nav class="navbar-nav ml-auto">
+                <a class="nav-link dash-link text-white" routerLink="/Admin-dashboard/Pending-Allotments">Pending
+                    Approvals</a>
+                <a class="nav-link dash-link text-white" routerLink="/Admin-dashboard/Alloted-To-Me">Alloted
+                    Customers</a>
+            </nav>
+        </div>
+    </nav>
+</div>
+
+<div class="container-fluid mt-3">
+
+    <div class="dashboard col-lg-11 m-auto">
+        <div class="main-block col-12 m-auto p-2 WorkSans">
+            <div class="row">
+                <div class="col-sm-auto pt-1"><b>Current Status</b></div>
+            </div>
+            <hr>
+            <div class="container table-responsive">
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td><span class="h5 text-muted">Total Pending Approvals:</span></td>
+                            <td><span class="h2">{{ custpending?.length || '0' }}</span></td>
+                        </tr>
+                        
+                        <tr>
+                            <td><span class="h5 text-muted">Total Alloted Customers:</span></td>
+                            <td><span class="h2">{{ custalloted?.length || '0' }}</span></td>
+                        </tr>                       
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <hr>
+
+        <router-outlet></router-outlet>
+
+        
+    </div>
+</div>

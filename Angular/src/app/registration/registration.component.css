@@ -1,0 +1,28 @@
+
+
+.SRN-block{
+    position: fixed;
+    background-color: rgba(128, 128, 128, 0.185);
+    top:0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.inner-block{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.forgot-link{
+    color:rgb(185, 176, 176);
+}
+
+.forgot-link:hover{
+    text-decoration: none;
+    color:rgb(211, 40, 140);
+}
